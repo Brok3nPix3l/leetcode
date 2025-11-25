@@ -11,43 +11,43 @@
 
 class Solution {
     public String maximumTime(String time) {
-        String[] parts = time.split(":");
-        String hour = parts[0];
-        String minute = parts[1];
-        if (hour.charAt(0) == '?') {
-            if (hour.charAt(1) == '?') {
-                hour = "23";
+        char h1 = time.charAt(0), h2 = time.charAt(1), m1 = time.charAt(3), m2 = time.charAt(4);
+        if (h1 == '?') {
+            if (h2 == '?') {
+                h1 = '2';
+                h2 = '3';
             } else {
-                int secondHourNum = hour.charAt(1) - '0';
+                int secondHourNum = h2 - '0';
                 if (secondHourNum <= 3) {
-                    hour = "2" + hour.charAt(1);
+                    h1 = '2';
                 } else {
-                    hour = "1" + hour.charAt(1);
+                    h1 = '1';
                 }
             }
         } else {
-            int firstHourNum = hour.charAt(0) - '0';
-            if (hour.charAt(1) == '?') {
+            int firstHourNum = h1 - '0';
+            if (h2 == '?') {
                 if (firstHourNum == 2) {
-                    hour = firstHourNum + "3";
+                    h2 = '3';
                 } else {
-                    hour = firstHourNum + "9";
+                    h2 = '9';
                 }
             } // else hour is already void of any hidden digits
         }
-        if (minute.charAt(0) == '?') {
-            if (minute.charAt(1) == '?') {
-                minute = "59";
+        if (m1 == '?') {
+            if (m2 == '?') {
+                m1 = '5';
+                m2 = '9';
             } else {
-                // int secondMinuteNum = minute.charAt(1) - '0';
-                minute = "5" + minute.charAt(1);
+                // int secondMinuteNum = m2 - '0';
+                m1 = '5';
             }
         } else {
-            int firstMinuteNum = minute.charAt(0) - '0';
-            if (minute.charAt(1) == '?') {
-                minute = minute.charAt(0) + "9";
+            int firstMinuteNum = m1 - '0';
+            if (m2 == '?') {
+                m2 = '9';
             } // else minute is already void of any hidden digits
         }
-        return hour + ":" + minute;
+        return "" + h1 + h2 + ":" + m1 + m2;
     }
 }
