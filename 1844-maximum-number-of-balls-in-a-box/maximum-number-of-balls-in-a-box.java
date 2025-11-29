@@ -4,7 +4,6 @@ class Solution {
         int maxFreq = 0;
         int curDigitalSum = computeDigitalSum(lowLimit);
         for (int i = lowLimit; i <= highLimit; i++) {
-            System.out.println("i=" + i + " curDigitalSum=" + curDigitalSum);
             digitalSumFreqMap.put(curDigitalSum, digitalSumFreqMap.getOrDefault(curDigitalSum, 0) + 1);
             maxFreq = Math.max(digitalSumFreqMap.get(curDigitalSum), maxFreq);
             
