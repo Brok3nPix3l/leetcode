@@ -2,10 +2,18 @@ class Solution {
     public int countBalls(int lowLimit, int highLimit) {
         Map<Integer,Integer> digitalSumFreqMap = new HashMap<>();
         int maxFreq = 0;
+        int curDigitalSum = computeDigitalSum(lowLimit);
         for (int i = lowLimit; i <= highLimit; i++) {
-            int digitalSum = computeDigitalSum(i);
-            digitalSumFreqMap.put(digitalSum, digitalSumFreqMap.getOrDefault(digitalSum, 0) + 1);
-            maxFreq = Math.max(digitalSumFreqMap.get(digitalSum), maxFreq);
+            System.out.println("i=" + i + " curDigitalSum=" + curDigitalSum);
+            digitalSumFreqMap.put(curDigitalSum, digitalSumFreqMap.getOrDefault(curDigitalSum, 0) + 1);
+            maxFreq = Math.max(digitalSumFreqMap.get(curDigitalSum), maxFreq);
+            
+            int temp = i;
+            while (temp >= 9 && temp % 10 == 9) {
+                curDigitalSum -= 9;
+                temp /= 10;
+            }
+            curDigitalSum++;
         }
         return maxFreq;
     }
