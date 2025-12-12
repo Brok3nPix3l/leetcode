@@ -1,9 +1,8 @@
 class Solution {
     public int[] countMentions(int numberOfUsers, List<List<String>> events) {
-        Comparator<List<String>> comparator = Comparator
+        events.sort(Comparator
             .<List<String>>comparingInt(e -> Integer.parseInt(e.get(1)))
-            .thenComparing(e -> !e.get(0).equals("OFFLINE"));
-        events.sort(comparator);
+            .thenComparing(e -> !e.get(0).equals("OFFLINE")));
         int[] online = new int[numberOfUsers];
         int[] mentionCount = new int[numberOfUsers];
         for (List<String> event : events) {
