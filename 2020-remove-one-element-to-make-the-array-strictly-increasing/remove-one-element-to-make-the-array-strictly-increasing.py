@@ -1,14 +1,21 @@
 class Solution:
     def canBeIncreasing(self, nums: List[int]) -> bool:
-        for i in range(len(nums)):
-            if self.is_strictly_increasing(nums[0:i] + nums[i+1:]):
-                return True
-        
-        return False
-    
-    def is_strictly_increasing(self, nums: list[int]) -> bool:
+        removed = False
         for i in range(len(nums)-1):
+            # print(i)
             if not (nums[i] < nums[i+1]):
-                return False
+                if removed:
+                    return False
+                # try removing nums[i+1]
+                if len(nums) < i+3 or nums[i] < nums[i+2]:
+                    # print(f'removed {i+1}')
+                    i += 1
+                    removed = True
+                # try removing nums[i]
+                elif i == 0 or nums[i-1] < nums[i+1]:
+                    # print(f'removed {i}')
+                    removed = True
+                else:
+                    return False
         
         return True
