@@ -1,5 +1,10 @@
 class Solution:
     def findGCD(self, nums: List[int]) -> int:
+        smallest, largest = self.smallest_and_largest(nums)
+        
+        return self.gcd(smallest, largest)
+
+    def smallest_and_largest(self, nums: list[nums]) -> tuple[int, int]:
         smallest = None
         largest = None
         for n in nums:
@@ -8,8 +13,10 @@ class Solution:
             if not largest or n > largest:
                 largest = n
         
-        for i in range(smallest, 1, -1):
-            if largest % i == 0 and smallest % i == 0:
-                return i
+        return (smallest, largest)
+
+    def gcd(self, n1, n2):
+        if n1 == 0:
+            return n2
         
-        return 1
+        return gcd(n2 % n1, n1)
