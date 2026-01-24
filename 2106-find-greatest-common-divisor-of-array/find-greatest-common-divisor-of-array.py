@@ -16,7 +16,8 @@ class Solution:
         return (smallest, largest)
 
     def gcd(self, n1, n2):
-        if n1 == 0:
-            return n2
-        
-        return gcd(n2 % n1, n1)
+        while n1 != 0:
+            temp = n1
+            n1 = n2 % n1
+            n2 = temp
+        return n2
