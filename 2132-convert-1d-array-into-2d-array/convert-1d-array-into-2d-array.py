@@ -7,7 +7,7 @@ class Solution:
         for i in range(m):
             arr_2d.append([])
             for j in range(n):
-                print(f'i={i} j={j} index={i*n+j}')
+                # print(f'i={i} j={j} index={i*n+j}')
                 arr_2d[i].append(original[i*n+j])
         
         return arr_2d
