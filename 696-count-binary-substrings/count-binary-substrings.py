@@ -1,16 +1,15 @@
 class Solution:
     def countBinarySubstrings(self, s: str) -> int:
-        counts = [0, 0]
-        cur = s[0]
+        l = 0
+        m = 0
         ans = 0
-        for i in s:
-            if i != cur:
-                if counts[0] and counts[1]:
-                    ans += min(counts[0], counts[1])
-                cur = i
-                counts[int(cur)] = 1
-            else:
-                counts[int(i)] += 1
-            # print(counts)
-        ans += min(counts[0], counts[1])
+        for r in range(len(s)):
+            # print(f'l={l} m={m} r={r}')
+            if s[r] != s[m]:
+                if l != m:
+                    ans += min(r - m, m - l)
+                l = m
+                m = r
+                # print(f'l={l} m={m} r={r} ans={ans}')
+        ans += min(len(s) - m, m - l)
         return ans
