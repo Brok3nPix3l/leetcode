@@ -5,4 +5,4 @@ class Solution:
             if num != key:
                 continue
             c[nums[i+1]] += 1
-        return c.most_common(1)[0][0]
+        return c.most_common()[0][0]
