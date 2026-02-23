@@ -9,10 +9,10 @@ class Solution:
             int_code = int(str_code, 2) 
             # print(f'str_code={str_code} int_code={int_code}')
             codes.add(int_code)
-            if len(codes) == 2 ** k:
-                return True
+            # if len(codes) == 2 ** k:
+                # return True
             l += 1
-        return False
+        # return False
         # print(2 ** k - 1)
         # print(len(codes))
-        # return len(codes) == 2 ** k
+        return len(codes) == 2 ** k
