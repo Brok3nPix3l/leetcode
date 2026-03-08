@@ -2,7 +2,7 @@ class Solution:
     def minMaxGame(self, nums: List[int]) -> int:
         while len(nums) > 1:
             new_nums = []
-            for i in range(int(len(nums) / 2)):
+            for i in range(len(nums) // 2):
                 if i % 2 == 0:
                     new_nums.append(min(nums[2 * i], nums[2 * i + 1]))
                 else:
