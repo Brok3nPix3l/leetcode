@@ -3,11 +3,11 @@ class Solution:
         char_idxs = {}
         for i, c in enumerate(s):
             char_idxs.setdefault(c, []).append(i)
-        # print(char_idxs)
         for c in char_idxs:
             exp_dist = distance[ord(c) - ord('a')]
-            act_dist = abs(char_idxs[c][0] - char_idxs[c][1]) - 1
-            # print(f'exp_dist={exp_dist} act_dist={act_dist}')
+            # char_idxs[c][1] is always > char_idxs[c][0] because we iterate over `s` from i=0 to i=len(s)-1
+            # so no need to abs()
+            act_dist = char_idxs[c][1] - char_idxs[c][0] - 1
             if exp_dist != act_dist:
                 return False
         return True
