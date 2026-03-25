@@ -7,7 +7,8 @@ class Solution:
             exp_dist = distance[ord(c) - ord('a')]
             # char_idxs[c][1] is always > char_idxs[c][0] because we iterate over `s` from i=0 to i=len(s)-1
             # so no need to abs()
-            act_dist = char_idxs[c][1] - char_idxs[c][0] - 1
+            firstIdx, lastIdx = char_idxs[c]
+            act_dist = lastIdx - firstIdx - 1
             if exp_dist != act_dist:
                 return False
         return True
