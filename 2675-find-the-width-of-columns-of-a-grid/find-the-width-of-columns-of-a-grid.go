@@ -43,7 +43,9 @@ func intLen(i int) int {
             return length + 8
         case i < 1000000000:
             return length + 9
-        default:
+        case i < 10000000000:
             return length + 10
+        default:
+            panic("int64 not supported")
     }
 }
