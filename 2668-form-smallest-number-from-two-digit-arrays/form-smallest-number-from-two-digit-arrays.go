@@ -18,6 +18,9 @@ func minNumber(nums1 []int, nums2 []int) int {
     if a > b {
         a, b = b, a
     }
-    ans, _ := strconv.Atoi(fmt.Sprintf("%d%d", a, b))
+    ans, err := strconv.Atoi(fmt.Sprintf("%d%d", a, b))
+    if err != nil {
+        panic(err)
+    }
     return ans
 }
