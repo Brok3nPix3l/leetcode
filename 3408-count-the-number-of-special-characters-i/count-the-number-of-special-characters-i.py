@@ -1,8 +1,10 @@
 class Solution:
     def numberOfSpecialChars(self, word: str) -> int:
-        ctr = Counter(word)
+        seen = {letter: False for letter in string.ascii_lowercase + string.ascii_uppercase}
+        for letter in word:
+            seen[letter] = True
         specialChars = 0
         for letter in string.ascii_lowercase:
-            if ctr[letter] > 0 and ctr[letter.upper()] > 0:
+            if seen[letter] and seen[letter.upper()]:
                 specialChars += 1
         return specialChars
