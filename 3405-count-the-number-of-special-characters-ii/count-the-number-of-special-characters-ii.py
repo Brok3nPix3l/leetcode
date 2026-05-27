@@ -1,15 +1,15 @@
 class Solution:
     def numberOfSpecialChars(self, word: str) -> int:
-        chars_map = {}
-        for i, c in enumerate(word):
-            if c.lower() not in chars_map:
-                chars_map[c.lower()] = {}
+        seen = [0 for _ in string.ascii_lowercase]
+        for c in word:
             if c == c.lower():
-                chars_map[c.lower()]['last_lower'] = i
-            elif 'first_upper' not in chars_map[c.lower()]:
-                chars_map[c.lower()]['first_upper'] = i
-        ans = 0
-        for c, cm in chars_map.items():
-            if 'last_lower' in cm and 'first_upper' in cm and cm['last_lower'] < cm['first_upper']:
-                ans += 1
-        return ans
+                if seen[ord(c.lower()) - ord('a')] in [0, 1]:
+                    seen[ord(c.lower()) - ord('a')] = 1
+                else:
+                    seen[ord(c.lower()) - ord('a')] = 3
+            else:
+                if seen[ord(c.lower()) - ord('a')] in [1, 2]:
+                    seen[ord(c.lower()) - ord('a')] = 2
+                else:
+                    seen[ord(c.lower()) - ord('a')] = 3
+        return sum(1 if v == 2 else 0 for v in seen)
