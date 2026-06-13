@@ -4,7 +4,6 @@ class Solution:
         for i, word in enumerate(words):
             for c in word:
                 word_weights[i] += weights[ord(c) - ord('a')]
-        print(word_weights)
         ans = [None] * len(words)
         for i, weight in enumerate(word_weights):
             ans[i] = chr(ord('z') - weight % 26)
