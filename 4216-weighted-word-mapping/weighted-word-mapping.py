@@ -1,10 +1,3 @@
 class Solution:
     def mapWordWeights(self, words: List[str], weights: List[int]) -> str:
-        word_weights = [0] * len(words)
-        for i, word in enumerate(words):
-            for c in word:
-                word_weights[i] += weights[ord(c) - ord('a')]
-        ans = [None] * len(words)
-        for i, weight in enumerate(word_weights):
-            ans[i] = chr(ord('z') - weight % 26)
-        return "".join(ans)
+        return "".join([chr(ord('z') - weight % 26) for weight in [sum(weights[ord(c) - ord('a')] for c in word) for word in words]])
