@@ -11,24 +11,18 @@ class Solution:
 
 def generateLargestPrefixArray(nums: list[int]) -> list[int]:
     n = len(nums)
-
     ans = [nums[0]] * n
-    largest = nums[0]
 
     for i in range(1, n):
-        largest = max(largest, nums[i])
-        ans[i] = largest
+        ans[i] = max(ans[i - 1], nums[i])
     
     return ans
 
 def generateSmallestSuffixArray(nums: list[int]) -> list[int]:
     n = len(nums)
-
     ans = [nums[-1]] * n
-    smallest = nums[-1]
 
     for i in range(n - 2, -1, -1):
-        smallest = min(smallest, nums[i])
-        ans[i] = smallest
+        ans[i] = min(ans[i + 1], nums[i])
     
     return ans
