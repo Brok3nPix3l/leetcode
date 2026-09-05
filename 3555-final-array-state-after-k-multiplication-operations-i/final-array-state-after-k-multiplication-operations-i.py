@@ -8,11 +8,8 @@ class Solution:
         
         for _ in range(k):
             n, i = heapq.heappop(numsWithIndex)
-            new = (n * multiplier, i)
-            heapq.heappush(numsWithIndex, new)
+            n *= multiplier
+            nums[i] = n
+            heapq.heappush(numsWithIndex, (n, i))
         
-        numsInIndexOrder = sorted(numsWithIndex, key=lambda a: a[1])
-
-        ans = list(map(lambda a: a[0], numsInIndexOrder))
-        
-        return ans
+        return nums
