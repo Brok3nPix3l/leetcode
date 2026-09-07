@@ -4,4 +4,4 @@ class Solution:
         p2 = str(num2).zfill(4)
         p3 = str(num3).zfill(4)
 
-        return int("".join(min(p1[i], p2[i], p3[i]) for i in range(4)))
+        return int("".join(min(a, b, c) for a, b, c in zip(p1, p2, p3)))
