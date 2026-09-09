@@ -8,4 +8,4 @@ class Solution:
         if k in s:
             return len(s) - 1
         
-        return len(set(nums))
+        return len(s)
