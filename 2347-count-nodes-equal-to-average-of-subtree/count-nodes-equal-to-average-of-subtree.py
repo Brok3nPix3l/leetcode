@@ -5,26 +5,28 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    ans = 0
     def averageOfSubtree(self, root: TreeNode) -> int:
-        self.traverse(root)
-        return self.ans
+        ans = 0
 
-    def traverse(self, node: TreeNode) -> Tuple[int, int]:
-        s, c = node.val, 1
-        
-        if node.left != None:
-            ns, nc = self.traverse(node.left)
-            s += ns
-            c += nc
-        if node.right != None:
-            ns, nc = self.traverse(node.right)
-            s += ns
-            c += nc
-        
-        if node.val == s // c:
-            self.ans += 1
-        
-        # print('node', node.val, 's', s, 'c', c)
-        
-        return s, c
+        def traverse(node: TreeNode) -> Tuple[int, int]:
+            nonlocal ans
+            s, c = node.val, 1
+            
+            if node.left != None:
+                ns, nc = traverse(node.left)
+                s += ns
+                c += nc
+            if node.right != None:
+                ns, nc = traverse(node.right)
+                s += ns
+                c += nc
+            
+            if node.val == s // c:
+                ans += 1
+            
+            # print('node', node.val, 's', s, 'c', c)
+            
+            return s, c
+
+        traverse(root)
+        return ans
