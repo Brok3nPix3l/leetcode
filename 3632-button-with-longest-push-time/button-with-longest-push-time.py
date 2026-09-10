@@ -3,7 +3,9 @@ class Solution:
         smallest_index, longest_duration = events[0]
         prev_time = longest_duration
 
-        for cur_index, cur_time in events[1:]:
+        for i in range(1, len(events)):
+            cur_index, cur_time = events[i]
+            prev_time = events[i - 1][1]
             cur_duration = cur_time - prev_time
 
             if cur_duration > longest_duration:
