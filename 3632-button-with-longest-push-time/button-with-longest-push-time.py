@@ -9,8 +9,8 @@ class Solution:
             if cur_duration > longest_duration:
                 longest_duration = cur_duration
                 smallest_index = cur_index
-            elif cur_duration == longest_duration:
-                smallest_index = min(smallest_index, cur_index)
+            elif cur_duration == longest_duration and cur_index < smallest_index:
+                smallest_index = cur_index
             
             prev_time = cur_time
         
