@@ -2,11 +2,18 @@ class Solution:
     def buttonWithLongestTime(self, events: List[List[int]]) -> int:
         longest_duration, smallest_index = None, None
 
-        for i, (index, time) in enumerate(events):
+        def duration(i):
+            nonlocal events
+            cur_event_time = events[i][1]
+            prev_event_time = events[i - 1][1]
+
             if i == 0:
-                cur_duration = time
-            else:
-                cur_duration = time - events[i - 1][1]
+                return cur_event_time
+            
+            return cur_event_time - prev_event_time
+        
+        for i, (index, time) in enumerate(events):
+            cur_duration = duration(i)
 
             if longest_duration is None or cur_duration > longest_duration:
                 longest_duration = cur_duration
