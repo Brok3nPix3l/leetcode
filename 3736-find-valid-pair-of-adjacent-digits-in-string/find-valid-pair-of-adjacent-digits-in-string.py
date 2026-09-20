@@ -14,7 +14,7 @@ class Solution:
         
         return ""
 
-    @cache
+    # @cache
     def appearsCorrectNumberOfTimes(self, d: chr) -> bool:
         num = int(d)
 
