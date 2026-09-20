@@ -1,6 +1,5 @@
 class Solution:
-    def reverseDegree(self, s: str) -> int:
-        return sum(reverse_degree(c) * (i + 1) for i, c in enumerate(s))
+    reverseDegreeDict = {chr(code): (26 - (code - ord('a'))) for code in range(ord('a'), ord('z') + 1)}
 
-def reverse_degree(c: chr) -> int:
-    return(26 - (ord(c) - ord('a')))
+    def reverseDegree(self, s: str) -> int:
+        return sum(self.reverseDegreeDict[c] * (i + 1) for i, c in enumerate(s))
