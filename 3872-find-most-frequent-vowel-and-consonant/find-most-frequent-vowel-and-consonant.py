@@ -1,20 +1,13 @@
 from collections import Counter
 
 class Solution:
-    vowels = ['a', 'e', 'i', 'o', 'u']
+    vowels = 'aeiou'
 
     def maxFreqSum(self, s: str) -> int:
-        c = Counter(s)
+        counter = Counter(s)
+        most_common = counter.most_common()
+        
+        max_vowel_freq     = next((freq for ch, freq in most_common if ch in self.vowels), 0)
+        max_consonant_freq = next((freq for ch, freq in most_common if ch not in self.vowels), 0)
 
-        most_common_vowel_freq = 0
-        for v in self.vowels:
-            most_common_vowel_freq = max(most_common_vowel_freq, c[v])
-            del c[v]
-
-        mce = c.most_common(1)
-        if len(mce) == 0:
-            most_common_consonant_freq = 0
-        else:
-            most_common_consonant_freq = c.most_common(1)[0][1]
-
-        return most_common_vowel_freq + most_common_consonant_freq
+        return max_vowel_freq + max_consonant_freq
