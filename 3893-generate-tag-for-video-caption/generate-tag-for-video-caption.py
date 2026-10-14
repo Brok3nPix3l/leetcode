@@ -4,4 +4,6 @@ class Solution:
         if len(words) == 0:
             return '#'
 
-        return f'#{words[0].lower()}{"".join(word.capitalize() for word in words[1:])}'[:100]
+        first_word = words[0].lower()
+        other_words_list = (word.capitalize() for word in words[1:])
+        return f'#{first_word}{"".join(other_words_list)}'[:100]
