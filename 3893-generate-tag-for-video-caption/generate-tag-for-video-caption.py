@@ -4,7 +4,4 @@ class Solution:
         if len(words) == 0:
             return '#'
 
-        return f'#{words[0].lower()}{"".join(map(titleCase, words[1:]))}'[:100]
-
-def titleCase(word: str) -> str:
-    return f'{word[0].upper()}{word[1:].lower()}'
+        return f'#{words[0].lower()}{"".join(word.capitalize() for word in words[1:])}'[:100]
