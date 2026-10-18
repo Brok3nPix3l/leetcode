@@ -11,7 +11,7 @@ class Solution:
 
         # create new sorted list by mapping source indices to target indices
         target_indices = sorted(range(len(nums)), key=lambda i: to_sorting_key(nums[i]))
-        print(target_indices)
+        # print(target_indices)
         
 
         """
