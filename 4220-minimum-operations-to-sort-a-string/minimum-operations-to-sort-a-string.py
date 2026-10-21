@@ -6,6 +6,9 @@ class Solution:
             - the smallest element is at position 0
             - the largest element is at position n - 1
         -1 if n == 2 and it's not sorted
+        3 if both:
+            - the smallest element is only present at the last index
+            - the largest element is only present at the first index
         else 2
         """
         s_s = ''.join(sorted(s))
@@ -18,7 +21,7 @@ class Solution:
         if len(s) == 2:
             return -1
         
-        if s_s[0] not in s[:-1] and s_s[-1] not in s[1:]:
+        if s[-1] == s_s[0] and s[0] == s_s[-1] and s.count(s_s[0]) == 1 and s.count(s_s[-1]) == 1:
             return 3
-            
+
         return 2
