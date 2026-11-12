@@ -1,13 +1,8 @@
-import heapq
-
 class Solution:
     def maxKDistinct(self, nums: List[int], k: int) -> List[int]:
         top_k = []
 
-        for num in nums:
-            if num in top_k:
-                continue
-            
+        for num in set(nums):
             if len(top_k) >= k:
                 heapq.heappushpop(top_k, num)
             else:
