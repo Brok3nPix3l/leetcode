@@ -10,4 +10,5 @@ class Solution:
             n //= 10
             exp += 1
         
-        return list(reversed(components))
+        components.reverse()
+        return components
