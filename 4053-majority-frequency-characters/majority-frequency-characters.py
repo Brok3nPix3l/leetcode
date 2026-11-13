@@ -11,12 +11,12 @@ class Solution:
         """
 
         freq_by_char = Counter(s)
-        char_by_freq = defaultdict(str)
+        group_by_freq = defaultdict(str)
         for char, freq in freq_by_char.items():
-            char_by_freq[freq] += char
+            group_by_freq[freq] += char
         
         freq_group_freqs = Counter(freq_by_char.values())
         
-        largest_group_size = max(sorted((size, k) for k, size in freq_group_freqs.items()))
+        _, largest_group_size = max((size, k) for k, size in freq_group_freqs.items())
         
-        return char_by_freq[largest_group_size[1]]
+        return group_by_freq[largest_group_size]
