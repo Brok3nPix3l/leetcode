@@ -3,7 +3,7 @@ class Solution:
         alt_sum = 0
 
         for i, num in enumerate(nums):
-            if i % 2 == 0:
+            if i & 1 == 0:
                 alt_sum += num
             else:
                 alt_sum -= num
