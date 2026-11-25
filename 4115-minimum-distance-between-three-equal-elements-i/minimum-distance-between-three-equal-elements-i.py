@@ -1,6 +1,6 @@
 class Solution:
     def minimumDistance(self, nums: List[int]) -> int:
-        min_distance = None
+        min_distance = float('inf')
         
         for i in range(len(nums)):
             for j in range(i + 1, len(nums)):
@@ -11,9 +11,6 @@ class Solution:
                         continue
                     
                     cur_distance = abs(i - j) + abs(j - k) + abs(k - i)
-                    if not min_distance:
-                        min_distance = cur_distance
-                    else:
-                        min_distance = min(min_distance, cur_distance)
+                    min_distance = min(min_distance, cur_distance)
         
-        return -1 if min_distance == None else min_distance
+        return -1 if min_distance == float('inf') else min_distance
